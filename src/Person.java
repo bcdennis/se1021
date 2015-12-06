@@ -5,6 +5,10 @@
  * Name: Brad Dennis, Ph.D.
  * Created: 12/6/2015
  */
+
+/**
+ * This simple class represents the person domain class.
+ */
 public class Person {
 
     private String name;

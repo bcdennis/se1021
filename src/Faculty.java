@@ -1,11 +1,15 @@
 /**
  * SE1021 – 031 & 032
  * Winter 2016
- * <p>
+ * Faculty.java
  * Name: Brad Dennis, Ph.D.
  * Created: 12/6/2015
  */
-public class FacultyMember extends Person {
+
+/**
+ * This class represents the Faculty domain class.
+ */
+public class Faculty extends Person {
 
     // Note: In IntelliJ, if you hit alt+enter
     // you can have the IDE generate getters and setters.
@@ -29,7 +33,7 @@ public class FacultyMember extends Person {
      * @param name The name of the faculty member.
      * @param rank The initial rank of the faculty member.
      */
-    public FacultyMember(String name, String rank) {
+    public Faculty(String name, String rank) {
         //What happens if we comment out this?
         super(name);
         setRank(rank);
