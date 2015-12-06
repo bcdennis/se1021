@@ -1,13 +1,14 @@
+package lecture04;
 /**
  * SE1021 – 031 & 032
  * Winter 2016
- * Faculty.java
+ * lecture04.Faculty.java
  * Name: Brad Dennis, Ph.D.
  * Created: 12/6/2015
  */
 
 /**
- * This class represents the Faculty domain class.
+ * This class represents the lecture04.Faculty domain class.
  */
 public class Faculty extends Person {
 
@@ -28,7 +29,7 @@ public class Faculty extends Person {
     }
 
     /**
-     * New Faculty constructor.  Name and initial rank are required.
+     * New lecture04.Faculty constructor.  Name and initial rank are required.
      *
      * @param name The name of the faculty member.
      * @param rank The initial rank of the faculty member.
@@ -40,7 +41,7 @@ public class Faculty extends Person {
     }
 
     /**
-     * Returns a String representation of the Faculty Member.
+     * Returns a String representation of the lecture04.Faculty Member.
      *
      * @return the String representation of the faculty.
      */

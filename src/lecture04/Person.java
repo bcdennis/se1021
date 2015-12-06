@@ -1,7 +1,8 @@
+package lecture04;
 /**
  * SE1021 – 031 & 032
  * Winter 2016
- * Person parent class.
+ * lecture04.Person parent class.
  * Name: Brad Dennis, Ph.D.
  * Created: 12/6/2015
  */
@@ -28,8 +29,8 @@ public class Person {
      * Java will inject a no-arg default constructor.
      * If you do, it won't.
      *
-     * Try the following code in Lecture04.java
-     * Person aPerson = new Person();
+     * Try the following code in lecture04.Lecture04.java
+     * lecture04.Person aPerson = new lecture04.Person();
      */
 
     /**

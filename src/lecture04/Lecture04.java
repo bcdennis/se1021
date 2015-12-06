@@ -1,3 +1,4 @@
+package lecture04;
 /**
  * SE1021 – 031 & 032
  * Winter 2016
@@ -23,8 +24,8 @@ public class Lecture04 {
         //Ex. 1 Implement student. Submit it here:
         //http://goo.gl/forms/F0X3RZWopl
 
-        List<Faculty> department = new ArrayList<>();
-        department.add(drDennis);
+        List<Faculty> eecs = new ArrayList<>();
+        eecs.add(drDennis);
 
         List<Person> msoePeople = new ArrayList<>();
         msoePeople.add(drDennis);
