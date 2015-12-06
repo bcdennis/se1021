@@ -1,4 +1,4 @@
-package lecture04;
+package lecture06;
 /**
  * SE1021 – 031 & 032
  * Winter 2016
@@ -10,7 +10,7 @@ package lecture04;
 /**
  * This simple class represents the person domain class.
  */
-public class Person {
+public abstract class Person {
 
     private String name;
 
@@ -42,6 +42,13 @@ public class Person {
     public Person(String name) {
         this.name = name;
     }
+
+    /**
+     * Each type of person has a unique greeting.
+     *
+     * @return  The persons greeting.
+     */
+    public abstract String greet();
 
     /**
      * Convert the person to a String representation.
