@@ -21,6 +21,11 @@ public class Lecture04 {
         Faculty drDennis = new Faculty("Brad Dennis", "Assistant Professor");
         System.out.println(drDennis.toString());
 
+        //Faculty drYoder = new Faculty("Yoder");
+
+        Person drBradley = new Faculty("Brad Dennis", "");
+
+
         //Ex. 1 Implement student. Submit it here:
         //http://goo.gl/forms/F0X3RZWopl
 
