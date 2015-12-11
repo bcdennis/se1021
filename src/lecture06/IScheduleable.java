@@ -14,6 +14,6 @@ package lecture06;
  */
 public interface IScheduleable {
 
-    void schedule(Schedule item);
-    String generateSchedule();
+    void schedule(String time, String duration, String location, String daysOfWeek);
+    String getSchedule();
 }

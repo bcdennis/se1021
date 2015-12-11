@@ -20,7 +20,7 @@ public class Faculty extends Person implements IScheduleable {
     // There is a similar feature in Eclipse.
     private String rank;
 
-    private List<Schedule> scheduleItems;
+    private List<IScheduleable> scheduleItems;
 
 
     // Note: Getters and setters do not need Javadoc

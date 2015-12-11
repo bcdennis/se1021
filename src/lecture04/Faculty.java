@@ -41,6 +41,14 @@ public class Faculty extends Person {
     }
 
 
+    /**
+     * Concrete implementation of greet.
+     *
+     * @return  THe faculty greeting.
+     */
+    public String greet() {
+        return "Hello, my name is " + getName() + " and I anm a " + getRank();
+    }
 
     /**
      * Returns a String representation of the lecture04.Faculty Member.

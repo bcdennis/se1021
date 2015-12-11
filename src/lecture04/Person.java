@@ -10,7 +10,7 @@ package lecture04;
 /**
  * This simple class represents the person domain class.
  */
-public class Person {
+public abstract class Person {
 
     private String name;
 
@@ -26,7 +26,8 @@ public class Person {
     /**
      * Note: There is no default constructor.
      * If you do not have any constructors implemented,
-     * Java will inject a no-arg default constructor.
+     * Java will
+     * inject a no-arg default constructor.
      * If you do, it won't.
      *
      * Try the following code in lecture04.Lecture06.java
@@ -42,6 +43,8 @@ public class Person {
     public Person(String name) {
         this.name = name;
     }
+
+    public abstract String greet();
 
     /**
      * Convert the person to a String representation.
