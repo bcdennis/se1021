@@ -77,9 +77,6 @@ public class Faculty extends Person implements IScheduleable {
     @Override
     public String generateSchedule() {
         String schedule = "";
-        for(Schedule s : scheduleItems) {
-            schedule += s.getSchedule();
-        }
 
         return schedule;
     }
