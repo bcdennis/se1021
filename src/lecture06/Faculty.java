@@ -75,7 +75,7 @@ public class Faculty extends Person implements IScheduleable {
      * @return A String of the schedule.
      */
     @Override
-    public String generateSchedule() {
+    public String getSchedule() {
         String schedule = "";
 
         return schedule;
