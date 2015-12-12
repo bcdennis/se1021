@@ -15,8 +15,8 @@ import java.util.List;
 public class Lecture04 {
 
     public static void main(String[] args) {
-        Person aPerson = new Person("Jane Doe");
-        System.out.println(aPerson.toString());
+        //Person aPerson = new Person("Jane Doe");
+        //System.out.println(aPerson.toString());
 
         Faculty drDennis = new Faculty("Brad Dennis", "Assistant Professor");
         System.out.println(drDennis.toString());
