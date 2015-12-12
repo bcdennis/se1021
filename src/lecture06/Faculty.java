@@ -56,14 +56,17 @@ public class Faculty extends Person implements IScheduleable {
         return "Hello, my name is " + getName();
     }
 
+
     /**
-     * Schedules the faculty for a course.
-     *
-     * @param item the Schedule item to add.
+     * Schedules this faculty.
+     * @param time  the event time.
+     * @param duration  the event duration.
+     * @param location  the event location.
+     * @param daysOfWeek the event days of the week.
      */
     @Override
-    public void schedule(Schedule item) {
-        scheduleItems.add(item);
+    public void schedule(String time, String duration, String location, String daysOfWeek) {
+       // do something here.
     }
 
     /**
