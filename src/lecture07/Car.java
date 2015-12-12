@@ -20,11 +20,11 @@ public abstract class Car {
         return make;
     }
 
-    public String getModel() {
+    protected String getModel() {
         return model;
     }
 
-    public String getColor() {
+    private String getColor() {
         return color;
     }
 
@@ -55,6 +55,12 @@ public abstract class Car {
         return getColor() + " " + getMake() + " " + getModel();
     }
 
+    /**
+     * Checks to see if one car is the same as another.
+     *
+     * @param obj the operand
+     * @return whether or not the cars are the same.
+     */
     public boolean equals(Object obj) {
         boolean isEqual = false;
         if (obj instanceof Car) {

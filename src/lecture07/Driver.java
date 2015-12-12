@@ -11,16 +11,16 @@ package lecture07;
 public class Driver {
     public static void main(String[] args) {
 
-        AudiAllroad car1 = new AudiAllroad("Black");
+        AudiAllroad car1 = new AudiAllroad("Black", "S-type");
         AudiA6 car2 = new AudiA6("White");
 
         System.out.println(car1);
         System.out.println(car2);
 
-        Audi car3 = new AudiAllroad("Yellow");
+        Audi car3 = new AudiAllroad("Yellow", "");
         System.out.println(car3);
 
-        Car car4 = new AudiAllroad("Red");
+        Car car4 = new AudiAllroad("Red", "");
         System.out.println(car4);
 
 
