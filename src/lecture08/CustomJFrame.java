@@ -1,9 +1,4 @@
 package lecture08;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.awt.FlowLayout;
-
 /**
  * CustomJFrame.java
  *
@@ -14,6 +9,12 @@ import java.awt.FlowLayout;
  * Created:  1/4/2015
  * Modified: --
  */
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.FlowLayout;
+
+
 public class CustomJFrame extends JFrame {
 
 
@@ -34,7 +35,7 @@ public class CustomJFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        CustomJFrame frame = new CustomJFrame("Title");
+        CustomJFrame frame = new CustomJFrame("Title Bar Text");
 
         frame.setVisible(true);
     }
