@@ -9,7 +9,7 @@ package lecture07;
  */
 public class Workshop {
     public static void main(String[] args) {
-        FulltimeStudent jack = new FulltimeStudent("Jack", "Freshman", "SE");
+        /*FulltimeStudent jack = new FulltimeStudent("Jack", "Freshman", "SE");
         FulltimeStudent twin = jack;
         FulltimeStudent jack2 = new FulltimeStudent("Jack", "Freshman", "SE");
         FulltimeStudent sarah = new FulltimeStudent("Sarah", "Freshman", "SE");
@@ -41,5 +41,6 @@ public class Workshop {
         // false
         // true
         // false
+        */
     }
 }
