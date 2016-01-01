@@ -1,19 +1,20 @@
 package lecture08;
 
+// http://stackoverflow.com/questions/3348816/intellij-never-use-wildcard-imports
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.FlowLayout;
 
-import javax.swing.*;
-import java.awt.*;
-
-////
-// JFrame.java
-//
-// This is a simple program that will be used to demonstrate
-// more JFrame.
-//
-// @author Brad Dennis
-// Created:  1/4/2015
-// Modified: --
-///
+/**
+ * JFrame.java
+ *
+ * This is a simple program that will be used to demonstrate
+ *  more JFrame.
+ *
+ *  @author Brad Dennis
+ * Created:  1/4/2015
+ *  Modified: --
+ */
 public class JFrameDemo {
 
     public static void main(String[] args) {
