@@ -23,25 +23,25 @@ public class JOptionPaneDemo {
         //
         // The second argument is the message to display in the dialog.
 
-        JOptionPane.showMessageDialog(null, "Hello World");
+       // JOptionPane.showMessageDialog(null, "Hello World");
 
-/*
+
         //
         // The third argument is the title of the dialog.
         // We can also change the icon in the dialog by adding an optional fourth argument.
         //
-        JOptionPane.showMessageDialog(null, "ERROR", "Title", JOptionPane.ERROR_MESSAGE);
-
-        JOptionPane.showMessageDialog(null, "Default Icon", "", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, "Warning Icon", "", JOptionPane.WARNING_MESSAGE);
-        JOptionPane.showMessageDialog(null, "Question Icon", "", JOptionPane.QUESTION_MESSAGE);
-        JOptionPane.showMessageDialog(null, "No Icon", "", JOptionPane.PLAIN_MESSAGE);
+        //JOptionPane.showMessageDialog(null, "ERROR", "Title", JOptionPane.ERROR_MESSAGE);
+//
+ //       JOptionPane.showMessageDialog(null, "Default Icon", "", JOptionPane.INFORMATION_MESSAGE);
+ //       JOptionPane.showMessageDialog(null, "Warning Icon", "", JOptionPane.WARNING_MESSAGE);
+ //       JOptionPane.showMessageDialog(null, "Question Icon", "", JOptionPane.QUESTION_MESSAGE);
+ //       JOptionPane.showMessageDialog(null, "No Icon", "", JOptionPane.PLAIN_MESSAGE);
 
         //
         // showConfirmDialog adds yes/no/cancel buttons to the dialog box
         //
-        JOptionPane.showConfirmDialog(null, "Default buttons", "", JOptionPane.DEFAULT_OPTION);
-        JOptionPane.showConfirmDialog(null, "Yes/No buttons", "", JOptionPane.YES_NO_OPTION);
+/*        JOptionPane.showConfirmDialog(null, "Default buttons", "", JOptionPane.DEFAULT_OPTION);
+//        JOptionPane.showConfirmDialog(null, "Yes/No buttons", "", JOptionPane.YES_NO_OPTION);
         JOptionPane.showConfirmDialog(null, "Yes/No/Cancel buttons", "", JOptionPane.YES_NO_CANCEL_OPTION);
         JOptionPane.showConfirmDialog(null, "OK/Cancel buttons", "", JOptionPane.OK_CANCEL_OPTION);
 
@@ -62,10 +62,10 @@ public class JOptionPaneDemo {
                 break;
         }
 
-        //
+*/        //
         // showInputDialog  allows us to get input from the user
         //
-        String input = JOptionPane.showInputDialog(null, "What is your name?",
+/*        String input = JOptionPane.showInputDialog(null, "What is your name?",
                 "Title", JOptionPane.QUESTION_MESSAGE);
 
         System.out.println("You entered: " + input);
@@ -73,7 +73,7 @@ public class JOptionPaneDemo {
         //
         // showOptionDialog gives us a combo of all the above.
         //
-
+*/
         Object[] buttons = {"A lot", "Somewhat", "A little", "Not at all"};
         String prompt = "How happy are you to be back from break?";
         String title = "Happiness Survey";
@@ -95,6 +95,6 @@ public class JOptionPaneDemo {
 
         System.out.println(output);
 
-*/
+
     }
 }

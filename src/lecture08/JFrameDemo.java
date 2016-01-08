@@ -49,13 +49,14 @@ public class JFrameDemo {
         frame.setSize(300, 200);
 
         // we have to tell the frame how to handle close
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // this tells the frame what strategy to use when placing components on the frame.
         frame.setLayout(new FlowLayout());
 
         // now we can add stuff to the GUI
         frame.add(new JLabel("Text label"));
+
 
         // now show the frame
         frame.setVisible(true);
