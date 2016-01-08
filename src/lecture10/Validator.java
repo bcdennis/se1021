@@ -41,9 +41,6 @@ public class Validator implements FocusListener {
     @Override
     public void focusLost(FocusEvent e) {
 
-        Font font = new Font("Arial", Font.ITALIC, 12);
-        target.setFont(font);
-
         target.setForeground(Color.RED);
         String message = "A username is required.";
 

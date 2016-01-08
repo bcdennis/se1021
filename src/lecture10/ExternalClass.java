@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class ExternalClass extends JFrame implements ActionListener {
 
         validationArea = new JTextArea(5, 20);
         validationArea.setBackground(getBackground());
+        Font font = new Font("Arial", Font.ITALIC, 12);
+        validationArea.setFont(font);
 
         usernameField = new JTextField(30);
         ArrayList<String> values = new ArrayList<>();
@@ -56,6 +59,8 @@ public class ExternalClass extends JFrame implements ActionListener {
         submitButton = new JButton("Submit");
         cancelButton = new JButton("Cancel");
 
+        submitButton.addActionListener(this);
+        cancelButton.addActionListener(this);
 
         // Step 3: Add components to the GUI
         add(instructionsLabel);
@@ -65,25 +70,19 @@ public class ExternalClass extends JFrame implements ActionListener {
         add(cancelButton);
     }
 
-    /**
-     *
-     * @param args the command line arguments
-     */
+    public final void actionPerformed(final ActionEvent e) {
+        if (e.getSource() == submitButton) {
+            validationArea.setText("Saved!");
+        } else if (e.getSource() == cancelButton) {
+            System.out.println("The old text was '" + validationArea.getText() + "'.");
+            validationArea.setText("");
+        }
+    }
+
     public static void main(final String[] args) {
 
         ExternalClass frame = new ExternalClass();
         frame.setVisible(true);
     }
 
-    /**
-     *
-     * @param e
-     */
-    public final void actionPerformed(final ActionEvent e) {
-        if (e.getSource() == submitButton) {
-            validationArea.setText("Saved!");
-        } else if (e.getSource() == cancelButton) {
-            validationArea.setText("");
-        }
-    }
 }

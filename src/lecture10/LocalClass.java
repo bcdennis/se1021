@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
@@ -24,11 +26,12 @@ import java.util.ArrayList;
  * This is a simple program that will be used to demonstrate
  * simple inner classes
  */
-public class LocalClass extends JFrame {
+public class LocalClass extends JFrame implements ActionListener {
     private final JLabel instructionsLabel;
     private final JTextField usernameField;
     private final JTextArea validationArea;
     private final JButton submitButton;
+    private final JButton cancelButton;
 
     public LocalClass() {
         // Step 1:  Configure the frame
@@ -42,9 +45,10 @@ public class LocalClass extends JFrame {
 
         validationArea = new JTextArea(5, 20);
         validationArea.setBackground(getBackground());
+        Font font = new Font("Arial", Font.ITALIC, 12);
+        validationArea.setFont(font);
 
         usernameField = new JTextField(30);
-
 
         class Validator implements FocusListener {
             ArrayList<String> values = new ArrayList<>();
@@ -63,9 +67,6 @@ public class LocalClass extends JFrame {
 
             @Override
             public void focusLost(FocusEvent e) {
-                Font font = new Font("Arial", Font.ITALIC, 12);
-                validationArea.setFont(font);
-
                 validationArea.setForeground(Color.RED);
                 String message = "A username is required.";
 
@@ -83,14 +84,28 @@ public class LocalClass extends JFrame {
 
         usernameField.addFocusListener(new Validator());
 
-        submitButton = new JButton("Submit");
 
+        submitButton = new JButton("Submit");
+        cancelButton = new JButton("Cancel");
+
+        submitButton.addActionListener(this);
+        cancelButton.addActionListener(this);
 
         // Step 3: Add components to the GUI
         add(instructionsLabel);
         add(usernameField);
         add(validationArea);
         add(submitButton);
+        add(cancelButton);
+    }
+
+    public final void actionPerformed(final ActionEvent e) {
+        if (e.getSource() == submitButton) {
+            validationArea.setText("Saved!");
+        } else if (e.getSource() == cancelButton) {
+            System.out.println("The old text was '" + validationArea.getText() + "'.");
+            validationArea.setText("");
+        }
     }
 
     public static void main(String[] args) {

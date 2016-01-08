@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
@@ -24,11 +26,12 @@ import java.util.ArrayList;
  * This is a simple program that will be used to demonstrate
  * simple inner classes
  */
-public class InnerClass extends JFrame {
+public class InnerClass extends JFrame implements ActionListener {
     private final JLabel instructionsLabel;
     private final JTextField usernameField;
     private final JTextArea validationArea;
     private final JButton submitButton;
+    private final JButton cancelButton;
 
     public InnerClass() {
         // Step 1:  Configure the frame
@@ -42,18 +45,34 @@ public class InnerClass extends JFrame {
 
         validationArea = new JTextArea(5, 20);
         validationArea.setBackground(getBackground());
+        Font font = new Font("Arial", Font.ITALIC, 12);
+        validationArea.setFont(font);
 
         usernameField = new JTextField(30);
         usernameField.addFocusListener(new Validator());
 
-        submitButton = new JButton("Submit");
 
+        submitButton = new JButton("Submit");
+        cancelButton = new JButton("Cancel");
+
+        submitButton.addActionListener(this);
+        cancelButton.addActionListener(this);
 
         // Step 3: Add components to the GUI
         add(instructionsLabel);
         add(usernameField);
         add(validationArea);
         add(submitButton);
+        add(cancelButton);
+    }
+
+    public final void actionPerformed(final ActionEvent e) {
+        if (e.getSource() == submitButton) {
+            validationArea.setText("Saved!");
+        } else if (e.getSource() == cancelButton) {
+            System.out.println("The old text was '" + validationArea.getText() + "'.");
+            validationArea.setText("");
+        }
     }
 
     public static void main(String[] args) {
@@ -80,9 +99,6 @@ public class InnerClass extends JFrame {
 
         @Override
         public void focusLost(FocusEvent e) {
-            Font font = new Font("Arial", Font.ITALIC, 12);
-            validationArea.setFont(font);
-
             validationArea.setForeground(Color.RED);
             String message = "A username is required.";
 
