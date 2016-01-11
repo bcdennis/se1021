@@ -41,7 +41,6 @@ public class CalculatorApp extends JFrame {
         multiplyButton = new JButton(" * ");
         divideButton = new JButton(" / ");
 
-
         // Step 3: Add components to the GUI
         add(totalLabel);
         add(operatorField);
