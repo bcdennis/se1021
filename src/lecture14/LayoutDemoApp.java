@@ -40,7 +40,7 @@ public class LayoutDemoApp extends JFrame {
         initPanels();
 
         //Step 1: Flow Layout
-        buildFlowLayout();
+        //buildFlowLayout();
 
         //Step 2: Grid Layout
         //buildGridLayout();
@@ -49,7 +49,7 @@ public class LayoutDemoApp extends JFrame {
         //buildBoxLayout();
 
         //Step 4: BorderLayout
-        //buildBorderLayout();
+        buildBorderLayout();
     }
 
 
