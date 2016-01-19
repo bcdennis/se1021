@@ -1,7 +1,7 @@
 /**
  * SE1021
  * Winter 2016
- * Lecture 11
+ * Lecture 14
  * Name: Brad Dennis
  * Created: 1/15/2016
  */
@@ -12,9 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.WindowConstants;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
