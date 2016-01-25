@@ -5,10 +5,11 @@
  * Name: Brad Dennis
  * Created: 1/21/2016
  */
-package package17;
+package lecture17;
 
 import java.util.ArrayList;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -40,7 +41,6 @@ public class StringCalculator {
             try {
                 total += Integer.parseInt(operand);
             } catch (NumberFormatException e) {
-                LOGGER.warning(e.getMessage());
                 LOGGER.info("NumberFormatException: Add requires each argument to be a number.");
                 LOGGER.info(historyAsString());
                 throw e;
@@ -68,13 +68,12 @@ public class StringCalculator {
                 total -= Integer.parseInt(operands[i]);
             }
         } catch (NumberFormatException e) {
-            LOGGER.warning(e.getMessage());
-            LOGGER.info("NumberFormatException: Add requires each argument to be a number.");
+            LOGGER.info("NumberFormatException: Subtract requires each argument to be a number.");
             LOGGER.info(historyAsString());
             throw e;
         } finally {
             //The finally block ALWAYS executes when the try block exits.
-            history.add("add: " + input);
+            history.add("subtract: " + input);
         }
 
         return total;
@@ -86,6 +85,7 @@ public class StringCalculator {
         SimpleFormatter consoleFormatter = new SimpleFormatter();
 
         consoleHandler.setFormatter(consoleFormatter);
+        consoleHandler.setLevel(Level.WARNING);
 
         LOGGER.setUseParentHandlers(false);
         LOGGER.addHandler(consoleHandler);

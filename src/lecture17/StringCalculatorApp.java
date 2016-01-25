@@ -5,7 +5,7 @@
  * Name: Brad Dennis
  * Created: 1/21/2016
  */
-package package17;
+package lecture17;
 
 import java.util.Scanner;
 
@@ -71,8 +71,8 @@ public class StringCalculatorApp {
 
     public static void main(String[] args) {
        StringCalculatorApp app = new StringCalculatorApp();
-        app.startApp();
-        //app.executeTests();
+        //app.startApp();
+        app.executeTests();
 
     }
 
