@@ -95,7 +95,7 @@ public class StringCalculatorApp {
         // Simple test, does it throw an exception for one or no operands?
         System.out.print("Test: Throws IllegalArgumentException if no operands.");
         try {
-            calculator.add("1");
+            calculator.subtract("1");
             System.out.println("...failed!");
         } catch (IllegalArgumentException ex){
             System.out.println("...passed!");
@@ -104,7 +104,7 @@ public class StringCalculatorApp {
         //Simple test, does it throw an exception if an operand isn't a number?
         System.out.print("Test: Throws NumberFormatException if operand isn't a number.");
         try {
-            calculator.add("1, a");
+            calculator.subtract("1, a");
             System.out.println("...failed!");
         } catch (NumberFormatException ex){
             System.out.println("...passed!");
