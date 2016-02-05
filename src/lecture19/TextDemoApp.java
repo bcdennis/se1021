@@ -7,7 +7,10 @@
  */
 package lecture19;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -21,6 +24,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,14 +50,15 @@ public class TextDemoApp {
 
         //https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
         //String contents = readFile(inputFile, this::readWithBufferedReader, this::noopDecoder);
-        String contents = readFile(inputFile, e->readWithFiles(e), e->noopDecoder(e));
+        String contents = readFile(inputFile, e->readUsingBufferedReader(e), e->noopDecoder(e));
+
         writeFile(outputFile, contents, this::writeWithBufferedWriter, this::rotate);
         System.out.println(rotate(contents));
+
         System.out.println(readFile(outputFile, this::readWithBufferedReader, this::rotate));
 
-        writeBinaryFile(binaryFile, contents, this::rotate);
-        System.out.println(readBinaryFile(binaryFile, contents, this::rotate));
-
+        writeBinaryFile(binaryFile, rotate(contents));
+        System.out.println(readBinaryFile(binaryFile, this::rotate));
 
     }
 
@@ -64,6 +69,55 @@ public class TextDemoApp {
     private void writeFile(String filename, String contents, IWriter writer, IEncoder encoder) {
         writer.write(filename, encoder.encode(contents));
     }
+
+    private void writeBinaryFile(String filename, String contents) {
+        String header = "|PWDv01|" + contents.length() + "\n";
+        String trailer = "\n|EOF~";
+
+
+
+        try (BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filename)))){
+            stream.write(header.getBytes());
+            stream.write(contents.getBytes());
+            stream.write(trailer.getBytes());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private String readBinaryFile(String filename, IDecoder decoder) {
+        String contents = "";
+        try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(new File(filename)))) {
+            byte[] header = new byte[8];
+            byte[] bytes = new byte[2];
+
+            int headerLength = stream.read(header);
+
+            if (headerLength != 8) {
+                throw new IOException("File header corrupted.");
+            }
+
+            if (stream.read(bytes) > 0) {
+                int size = Integer.parseInt(new String(bytes));
+                byte[] body = new byte[size];
+                if (stream.read(body) != size) {
+                    throw new IOException("File body corrupted.");
+                }
+
+                contents = new String(body);
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return decoder.decode(contents);
+    }
+
 
     /*
      * BufferedReader reads text from a character stream.
@@ -87,6 +141,36 @@ public class TextDemoApp {
             e.printStackTrace();
         }
 
+
+        return buffer;
+    }
+
+    /*
+     * BufferedReader without try-using
+     */
+    private String readUsingBufferedReader(String filename) {
+        String buffer = "";
+        BufferedReader reader = null;
+
+        try {
+            String line;
+            reader = new BufferedReader(new FileReader(filename));
+            while ((line = reader.readLine()) != null) {
+                buffer += line + "\n";
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
 
         return buffer;
     }
