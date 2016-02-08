@@ -13,8 +13,8 @@ package lecture20;
 public class ObjectIODemoApp {
 
     public void go() {
-        writePersonToFile();
-        readPersonFromFile();
+        writePeopleToFile();
+        readPeopleFromFile();
     }
 
 
@@ -24,11 +24,11 @@ public class ObjectIODemoApp {
     }
 
 
-    private void writePersonToFile() {
+    private void writePeopleToFile() {
         //TODO complete this method.
     }
 
-    private void readPersonFromFile() {
+    private void readPeopleFromFile() {
         //TODO complete this method.
     }
 }

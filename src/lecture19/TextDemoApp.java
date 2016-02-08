@@ -283,6 +283,7 @@ public class TextDemoApp {
 
         try {
             contents = (ArrayList<String>)Files.readAllLines(path);
+
             for(String s: contents) {
                 buffer += s;
                 buffer += "\n";
