@@ -5,7 +5,7 @@
  * Name: Brad Dennis
  * Created: 1/06/2016
  */
-package lecture10;
+package Winter2016.lecture10;
 
 
 import javax.swing.JButton;
@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
@@ -25,14 +26,14 @@ import java.util.ArrayList;
  * This is a simple program that will be used to demonstrate
  * simple anonymous classes
  */
-public class LambdaClass extends JFrame {
+public class AnonymousClass extends JFrame implements ActionListener {
     private final JLabel instructionsLabel;
     private final JTextField usernameField;
     private final JTextArea validationArea;
     private final JButton submitButton;
     private final JButton cancelButton;
 
-    public LambdaClass() {
+    public AnonymousClass() {
         // Step 1:  Configure the frame
         setTitle("Lab Submitter");
         setSize(500, 500);
@@ -56,12 +57,6 @@ public class LambdaClass extends JFrame {
         values.add("douglasea");
         values.add("droesedj");
 
-        // We can't use Lambda Expressions here because they require a
-        // functional interface.
-        // The Java Language Standard 9.8 defines a functional interface as:
-        // "A functional interface is an interface that has just one abstract method,
-        // and thus represents a single function contract."
-
         usernameField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -70,7 +65,6 @@ public class LambdaClass extends JFrame {
 
             @Override
             public void focusLost(FocusEvent e) {
-
 
                 validationArea.setForeground(Color.RED);
                 String message = "A username is required.";
@@ -86,17 +80,12 @@ public class LambdaClass extends JFrame {
             }
         });
 
+
         submitButton = new JButton("Submit");
         cancelButton = new JButton("Cancel");
 
-        submitButton.addActionListener(e ->
-            validationArea.setText("Saved!")
-        );
-
-        cancelButton.addActionListener(e -> {
-            System.out.println("The old text was '" + validationArea.getText() + "'.");
-            validationArea.setText("");
-        });
+        submitButton.addActionListener(this);
+        cancelButton.addActionListener(this);
 
         // Step 3: Add components to the GUI
         add(instructionsLabel);
@@ -106,9 +95,17 @@ public class LambdaClass extends JFrame {
         add(cancelButton);
     }
 
+    public final void actionPerformed(final ActionEvent e) {
+        if (e.getSource() == submitButton) {
+            validationArea.setText("Saved!");
+        } else if (e.getSource() == cancelButton) {
+            System.out.println("The old text was '" + validationArea.getText() + "'.");
+            validationArea.setText("");
+        }
+    }
 
     public static void main(String[] args) {
-        LambdaClass frame = new LambdaClass();
+        AnonymousClass frame = new AnonymousClass();
         frame.setVisible(true);
     }
 
