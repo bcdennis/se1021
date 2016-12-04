@@ -1,4 +1,4 @@
-/**
+/*
  * SE1021
  * Winter 2016
  * Scratch pad
