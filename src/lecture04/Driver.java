@@ -10,6 +10,7 @@ package lecture04;
 public class Driver {
     public static void main(String[] args) {
         doInstructorDemo();
+
         //doInteractiveDemo();
         //doStudentDemo();
     }
@@ -24,6 +25,10 @@ public class Driver {
 
         System.out.println(dennis.getGreeting());
         System.out.println(dennis.getOfficeInformation());
+
+        Faculty test = new FulltimeFaculty("TEst", "L333", "office hours", FulltimeFaculty.ASSISTANT_PROFESSOR);
+
+        System.out.println(test.getGreeting());
     }
 
 
