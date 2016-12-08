@@ -40,6 +40,12 @@ public abstract class Program {
      * @return
      */
     public String displayInformation() {
-        return getName() + " in " + getDepartment() + " Chair: " + chair.getGreeting();
+        String output = getName() + " in " + getDepartment() + " Chair: ";
+        if (getChair() != null) {
+            output += chair.getGreeting();
+        } else {
+            output += " None";
+        }
+        return output;
     }
 }
