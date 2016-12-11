@@ -27,9 +27,10 @@ public class FulltimeFaculty extends Faculty{
      * @param name   the name of the faculty
      * @param office the office where the faculty is located
      * @param hours  the faculty office hours
+     * @param rank the faculty rank
      */
     public FulltimeFaculty(String name, String office, String hours, String rank) {
-        super(name,TITLE , office, hours);
+        //super(name,TITLE , office, hours);
         this.rank = rank;
     }
 

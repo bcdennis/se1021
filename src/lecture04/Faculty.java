@@ -10,7 +10,7 @@ package lecture04;
 /**
  * This is representation of the domain object Faculty.
  */
-public class Faculty {
+public abstract class Faculty {
     // This constant isn't available outside of this particular class.
     private static final String DEFAULT_TITLE = "";
 
