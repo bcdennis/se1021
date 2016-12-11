@@ -54,7 +54,7 @@ public class Faculty {
      * @return the faculty greeting.
      */
     public String getGreeting() {
-        return "Hi, my name is " + getTitle() + " " + getName() + ".";
+        return "Hi, my name is " + getSalutation() + ".";
     }
 
     /**
@@ -63,5 +63,13 @@ public class Faculty {
      */
     public String getOfficeInformation() {
         return "My office is " + getOffice() + " and my hours are " + getHours() + ".";
+    }
+
+    /**
+     * Returns how to address the faculty member formally.
+     * @return the formal salutation for the faculty member.
+     */
+    public String getSalutation() {
+        return getTitle() + " " + getName();
     }
 }
