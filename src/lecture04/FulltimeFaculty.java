@@ -30,7 +30,7 @@ public class FulltimeFaculty extends Faculty{
      * @param rank the faculty rank
      */
     public FulltimeFaculty(String name, String office, String hours, String rank) {
-        //super(name,TITLE , office, hours);
+        super(name,TITLE , office, hours);
         this.rank = rank;
     }
 
