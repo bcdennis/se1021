@@ -18,9 +18,9 @@ public class ExceptionsDemoApp {
 
     public static void main(String[] args) {
 
-        //doUncheckedExceptions();
+        doUncheckedExceptions();
         //doCheckedExceptions();
-        doManuallyCheckedExceptions();
+        //doManuallyCheckedExceptions();
     }
 
 
@@ -112,7 +112,7 @@ public class ExceptionsDemoApp {
             return guess == randomNumber;
         }
 
-        public boolean isWarm(String input) /*throws GameException*/ /*throws GameRuntimeException*/ {//
+        public boolean isWarm(String input) /*throws GameException */  {//
             boolean isWarm = false;
 
             try {
@@ -127,7 +127,7 @@ public class ExceptionsDemoApp {
             return isWarm;
         }
 
-        public boolean isCold(String input)  { //
+        public boolean isCold(String input) /*throws GameRuntimeException*/ { //
             boolean isCold = false;
 
             try {
