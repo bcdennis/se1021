@@ -6,8 +6,10 @@
  */
 package lecture11;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -62,14 +64,26 @@ public class StringCalculator {
     }
 
     private void setupLogger() {
-        ConsoleHandler consoleHandler = new ConsoleHandler();
-        SimpleFormatter consoleFormatter = new SimpleFormatter();
-
-        consoleHandler.setFormatter(consoleFormatter);
-
+        System.setProperty("java.util.logging.SimpleFormatter.format",
+                "%1$tF %1$tT %4$s %2$s %5$s%6$s%n");
         LOGGER.setUseParentHandlers(false);
+
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        SimpleFormatter formatter = new SimpleFormatter();
+        consoleHandler.setFormatter(formatter);
+        consoleHandler.setLevel(Level.SEVERE);
+
+        try {
+            FileHandler fileHandler = new FileHandler("calculator.%u.%g.log");
+            fileHandler.setFormatter(formatter);
+
+            LOGGER.addHandler(fileHandler);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         LOGGER.addHandler(consoleHandler);
-        //LOGGER.setLevel(Level.SEVERE);
 
     }
 
