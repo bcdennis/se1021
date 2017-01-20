@@ -21,9 +21,12 @@ import java.util.logging.SimpleFormatter;
 public class StringCalculator {
 
     private static final Logger LOGGER = Logger.getLogger(StringCalculator.class.getName());
-    public static final String DELIMITER = ",";
+    private static final String DELIMITER = ",";
     private ArrayList<String> history;
 
+    /**
+     * Initializes the calculator.
+     */
     public StringCalculator(){
         setupLogger();
         history = new ArrayList<>();
@@ -31,10 +34,10 @@ public class StringCalculator {
     }
 
     /**
-     * Adds a string of numbers together.
+     * Adds a string of integers together.
      * @param input a list of atleast 2 operands delimited by a ','.
      * @return the result of the add
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException thrown when there is less than 2 operands.
      */
     public int add(String input) throws  IllegalArgumentException {
         String[] operands = input.split(DELIMITER);
@@ -48,7 +51,7 @@ public class StringCalculator {
 
         for (String operand: operands ) {
             try {
-                total += Integer.parseInt(operand);
+                total += Integer.parseInt(operand.trim());
             } catch (NumberFormatException e) {
                 LOGGER.warning(e.getMessage());
                 LOGGER.info("NumberFormatException: Add requires each argument to be a number.");

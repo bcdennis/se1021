@@ -6,6 +6,16 @@
  */
 package lecture11;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.IllegalFormatException;
+import java.util.List;
+
 /**
  * A Simple String Calculator App
  */
@@ -33,10 +43,29 @@ public class StringCalculatorApp {
     }
 
     protected void executeTests() {
-        testAdd();
-
-
+        //testAdd();
+        testAddFromFile();
     }
+
+    private void testAddFromFile()  {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("add-tests.txt"));
+            for(String line: lines) {
+               String[] parts = line.split(":");
+                if (parts.length == 2) {
+                    if (calculator.add(parts[1]) == Integer.parseInt(parts[0])) {
+                        System.out.println("Testing " + parts[1] + " = " + parts[0] + "...passed!");
+                    } else {
+                        System.out.println("...failed");
+                    }
+                }
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void testAdd() {
         //Simple test, does it work with 2 operands.
