@@ -19,15 +19,15 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 /**
- * TODO Add Class Javadocs
+ * Two most common API's
+ * http://docs.oracle.com/javase/8/docs/api/java/io/File.html
+ * https://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html
  */
 public class FilesApp {
     public static void main(String[] args) {
         createAFileUsingPath();
         createFileUsingFile();
-
         fileAttributes();
-
         readingAFile();
     }
 
@@ -48,7 +48,6 @@ public class FilesApp {
         Path file = new File("path.txt").toPath();
 
         try {
-            //https://docs.oracle.com/javase/7/docs/api/java/nio/file/Files.html
             Files.createFile(file);
         } catch (FileAlreadyExistsException e) {
             System.err.format("File named %s already exists.\n", file);
@@ -77,7 +76,7 @@ public class FilesApp {
 
 
     private static void readingAFile() {
-        String filename = "src\\Winter2016.lecture04\\Course.java";
+        String filename = "weather.dat";
 
         withAScanner(filename);
         tryScannerWithResources(filename);
