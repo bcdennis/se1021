@@ -5,7 +5,7 @@
  * Created: 01/22/2017
  */
 
-package Lecture12;
+package lecture12;
 
 import java.io.BufferedReader;
 import java.io.File;
