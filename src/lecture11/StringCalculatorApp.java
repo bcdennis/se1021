@@ -7,6 +7,7 @@
 package lecture11;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,6 +16,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.IllegalFormatException;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * A Simple String Calculator App
@@ -35,24 +37,30 @@ public class StringCalculatorApp {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
        StringCalculatorApp app = new StringCalculatorApp();
         //app.startApp();
         app.executeTests();
 
+
     }
 
     protected void executeTests() {
-        //testAdd();
+       // testAdd();
         testAddFromFile();
     }
 
     private void testAddFromFile()  {
         try {
+            //Step 1:  Read in the contents of the file into memory.
             List<String> lines = Files.readAllLines(Paths.get("add-tests.txt"));
+            //Step 2:  Process the contents of the file, line by line.
             for(String line: lines) {
+                //Step 3: Parse the line into it's constituent parts.
                String[] parts = line.split(":");
+                //Step 4: Verify data
                 if (parts.length == 2) {
+                    //Step 5:  Do stuff with the data.
                     if (calculator.add(parts[1]) == Integer.parseInt(parts[0])) {
                         System.out.println("Testing " + parts[1] + " = " + parts[0] + "...passed!");
                     } else {

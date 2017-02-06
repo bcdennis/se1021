@@ -64,6 +64,7 @@ import javafx.stage.Stage;
  * Sample application that shows examples of the different layout panes
  * provided by the JavaFX layout API.
  * The resulting UI is for demonstration purposes only and is not interactive.
+ * http://docs.oracle.com/javafx/2/layout/builtin_layouts.htm#CHDGHCDG
  */
 public class Layouts extends Application {
 
@@ -90,17 +91,17 @@ public class Layouts extends Application {
 
 // To see only the grid in the center, uncomment the following statement
 // comment out the setCenter() call farther down
-//        border.setCenter(addGridPane());
+        border.setCenter(addGridPane());
 
 // Choose either a TilePane or FlowPane for right region and comment out the
 // one you aren't using
-//        border.setRight(addFlowPane());
-        border.setRight(addTilePane());
+        border.setRight(addFlowPane());
+//        border.setRight(addTilePane());
 
 // To see only the grid in the center, comment out the following statement
 // If both setCenter() calls are executed, the anchor pane from the second
 // call replaces the grid from the first call
-        border.setCenter(addAnchorPane(addGridPane()));
+//        border.setCenter(addAnchorPane(addGridPane()));
 
         Scene scene = new Scene(border);
         stage.setScene(scene);

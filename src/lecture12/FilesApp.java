@@ -15,7 +15,10 @@ import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -85,14 +88,21 @@ public class FilesApp {
     }
 
     private static void withAScanner(String filename) {
+        Scanner scanner = null;
         try {
 
-            Scanner scanner = new Scanner(new File(filename));
+            scanner = new Scanner(new File(filename));
             while (scanner.hasNext()) {
                 System.out.println(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
             System.err.format("File named %s not found.\n", filename);
+
+        } finally {
+
+            if (scanner != null) {
+                scanner.close();
+            }
         }
     }
 
@@ -109,13 +119,17 @@ public class FilesApp {
 
     private static void tryWithBufferedReader(String filename) {
 
+        List<WeatherRecord> data = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                WeatherRecord record = WeatherRecord.fromDataFile(line);
+                data.add(record);
             }
         } catch (IOException e) {
             System.err.format("Error reading %s.\n", filename);
+        } catch (ParseException e) {
+            System.err.println("File is incorrectly formatted.  Exiting");
         }
     }
 

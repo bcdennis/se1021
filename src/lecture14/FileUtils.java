@@ -76,22 +76,16 @@ public class FileUtils {
      * https://docs.oracle.com/javase/8/docs/api/java/io/DataInputStream.html
      */
     public static String readWithDataStream(String filename) {
-        StringBuilder buffer = new StringBuilder();
+        String contents = "";
 
         // DataInputStream gives you features such as readInt, readByte, readChar
         try (DataInputStream stream = new DataInputStream(new FileInputStream(filename))) {
-
-            char character;
-
-            while ((character = stream.readChar()) != EOF) {
-                buffer.append(character);
-            }
-
+            contents = stream.readUTF();
         } catch (IOException e) {
             LOGGER.severe(e.getMessage());
         }
 
-        return buffer.toString();
+        return contents;
     }
 
     /*
@@ -148,9 +142,11 @@ public class FileUtils {
         StringBuilder buffer = new StringBuilder();
 
         try (ObjectInputStream stream = new ObjectInputStream(new FileInputStream(filename))) {
-            PasswordEntry entry = (PasswordEntry) stream.readObject();
-            buffer.append(entry);
-            buffer.append("\n");
+            PasswordEntry entry;
+            while( (entry = (PasswordEntry) stream.readObject()) != null) {
+                buffer.append(entry);
+                buffer.append("\n");
+            }
 
         } catch (ClassNotFoundException | IOException e) {
             LOGGER.severe(e.getMessage());
