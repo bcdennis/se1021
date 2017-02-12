@@ -55,10 +55,10 @@ public class EncryptionUtils {
     }
 
     public static String rot13Decoder(String token) {
-        return removeHeader(rotate(token));
+        return rotate(token);
     }
 
-    private static String removeHeader(String contents) {
+    public static String removeHeader(String contents) {
         StringBuilder buffer = new StringBuilder();
         Scanner scanner = new Scanner(contents);
         scanner.nextLine();
@@ -75,7 +75,7 @@ public class EncryptionUtils {
     }
 
     public static String base64Decoder(String token) {
-        return removeHeader(new String(Base64.getDecoder().decode(token)));
+        return new String(Base64.getDecoder().decode(token));
     }
 
     public static boolean isBase64(String header) {

@@ -14,9 +14,9 @@ import java.text.ParseException;
  */
 public class WeatherRecord {
     private static final int DATETIME_COL = 0;
-    private static final int RAINFALL_COL = 0;
-    private static final int HUMIDITY_COL = 0;
-    private static final int TEMPERATURE_COL = 0;
+    private static final int RAINFALL_COL = 1;
+    private static final int HUMIDITY_COL = 2;
+    private static final int TEMPERATURE_COL = 3;
 
     public String datetime;
     public double rainfall;

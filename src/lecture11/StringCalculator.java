@@ -74,7 +74,7 @@ public class StringCalculator {
         ConsoleHandler consoleHandler = new ConsoleHandler();
         SimpleFormatter formatter = new SimpleFormatter();
         consoleHandler.setFormatter(formatter);
-        consoleHandler.setLevel(Level.SEVERE);
+        consoleHandler.setLevel(Level.ALL);
 
         try {
             FileHandler fileHandler = new FileHandler("calculator.%u.%g.log");
