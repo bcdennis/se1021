@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.MainController">
+    <Label fx:id="outputLabel" layoutX="14.0" layoutY="144.0" text="This will get replaced by the text from the next scene. Click ---&gt;" />
+   <Button layoutX="471.0" layoutY="140.0" mnemonicParsing="false" onAction="#openButtonHandler" prefHeight="25.0" prefWidth="106.0" text="Open" />
+</Pane>
