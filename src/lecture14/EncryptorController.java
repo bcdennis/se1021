@@ -205,33 +205,22 @@ public class EncryptorController implements Initializable {
     private IDecoder getDecoder(File file) {
         IDecoder decoder = (e) -> EncryptionUtils.plainText(e);
         String header = TEXT;
-        /*identifyEncoding(FileUtils.peek(file));*/
+        //identifyEncoding(FileUtils.peek(file));
 
 
         switch(header)  {
             case TEXT:
                 break;
             case ROT13:
-                //decoder = EncryptionUtils::rot13Decoder;
+                decoder = EncryptionUtils::rot13Decoder;
                 break;
             case BASE64:
-               // decoder = EncryptionUtils::base64Decoder;
+               decoder = EncryptionUtils::base64Decoder;
         }
 
         return decoder;
     }
 
-    private String identifyEncoding(String header) {
-        String encoding = TEXT;
-
-        if (EncryptionUtils.rot13Decoder(header).equals(ROT13)) {
-            encoding = ROT13;
-        } else if (EncryptionUtils.isBase64(header)) {
-            encoding = BASE64;
-        }
-
-        return encoding;
-    }
 
     private IEncoder getEncoder() {
         IEncoder encoder = EncryptionUtils::plainText;
@@ -239,10 +228,10 @@ public class EncryptorController implements Initializable {
             case TEXT:
                 break;
             case ROT13:
-                //encoder = EncryptionUtils::rot13Encoder;
+                encoder = EncryptionUtils::rot13Encoder;
                 break;
             case BASE64:
-                //encoder = EncryptionUtils::base64Decoder;
+                encoder = EncryptionUtils::base64Encoder;
                 break;
         }
 

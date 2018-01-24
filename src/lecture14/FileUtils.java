@@ -21,6 +21,7 @@ import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -143,7 +144,7 @@ public class FileUtils {
 
         try (ObjectInputStream stream = new ObjectInputStream(new FileInputStream(filename))) {
             PasswordEntry entry;
-            while( (entry = (PasswordEntry) stream.readObject()) != null) {
+            while ((entry = (PasswordEntry) stream.readObject()) != null) {
                 buffer.append(entry);
                 buffer.append("\n");
             }
@@ -199,11 +200,11 @@ public class FileUtils {
      */
     public static void writeWithFileStream(String filename, String contents) {
         try (FileOutputStream stream = new FileOutputStream(new File(filename))) {
-            byte[] bytes = contents.getBytes();
+            byte[] bytes = contents.getBytes(StandardCharsets.UTF_8);
             stream.write(bytes);
 
-            //stream.flush()
-            //stream.close() //AutoCloseable
+            stream.flush();
+            stream.close(); //AutoCloseable
 
         } catch (IOException e) {
             LOGGER.severe(e.getMessage());
@@ -211,6 +212,10 @@ public class FileUtils {
         }
     }
 
+    /*
+     * DataOutputStream allows you to write java primitives in a "java" portable way.
+     * https://docs.oracle.com/javase/8/docs/api/java/io/DataOutputStream.html
+     */
     public static void writeWithDataStream(String filename, String contents) {
         try (DataOutputStream stream = new DataOutputStream(new FileOutputStream(filename))) {
             //you also have things like stream.writeInt, writeBoolean, etc.
@@ -222,7 +227,10 @@ public class FileUtils {
         }
     }
 
-
+    /*
+     * ObjectOutputStream allows you to write java objects in a "java" portable way.
+     * https://docs.oracle.com/javase/8/docs/api/java/io/ObjectOutputStream.html
+     */
     public static void writeWithObjectStream(String filename, String contents) {
         try (ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream((filename)))) {
 
@@ -254,9 +262,9 @@ public class FileUtils {
     }
 
     /*
- * Buffering typically improves performance and reliability.
- * https://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html
- */
+     * Buffering typically improves performance and reliability.
+     * https://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html
+     */
     public static void writeWithBufferedWriter(String filename, String contents) {
         try (BufferedWriter writer = new BufferedWriter(new PrintWriter(new File(filename)))) {
             writer.write(contents);
@@ -266,11 +274,10 @@ public class FileUtils {
         }
     }
 
-
     /*
- * FileWriter a class for writing text files.
- * https://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.html
- */
+     * FileWriter a class for writing text files.
+     * https://docs.oracle.com/javase/7/docs/api/java/io/FileWriter.html
+     */
     private void writeWithFileWriter(String filename, String contents) {
         try (FileWriter writer = new FileWriter(new File(filename))) {
             writer.write(contents);
