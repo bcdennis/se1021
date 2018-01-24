@@ -1,9 +1,10 @@
-/**
+/*
  * SE1021
- * Winter 2016
- * Lecture 15
+ * Winter 2018
+ * Lecture 19
  * Name: Brad Dennis
  * Created: 1/19/2016
+ * Revised: 1/17/2018
  */
 package lecture10;
 
@@ -26,11 +27,13 @@ public class ExceptionsDemoApp {
 
     private static void doUncheckedExceptions() {
         Scanner stdIn = new Scanner(System.in);
-        System.out.print("Guess the integer between 1 and 10 that I am thinking (q to quit): ");
         int randomNumber = new Random().nextInt(10) + 1;
         int counter = 0;
+
+        System.out.print("Guess the integer between 1 and 10 that I am thinking (q to quit): ");
         String response = stdIn.next();
-        do {
+
+        while (!response.equalsIgnoreCase("q")) {
             counter++;
             int number = Integer.parseInt(response);
 
@@ -45,7 +48,7 @@ public class ExceptionsDemoApp {
 
             System.out.print("Guess again: ");
             response = stdIn.next();
-        } while (!response.equalsIgnoreCase("q"));
+        }
 
         System.out.println("Game Over!");
 
@@ -73,14 +76,17 @@ public class ExceptionsDemoApp {
     }
 
     private static void doManuallyCheckedExceptions() {
-        Scanner stdIn = new Scanner(System.in);
-        System.out.print("Guess the integer between 1 and 10 that I am thinking (q to quit): ");
-        int counter = 0;
 
         GameLogic logic = new ExceptionsDemoApp().new GameLogic(10);
 
+        Scanner stdIn = new Scanner(System.in);
+        int randomNumber = new Random().nextInt(10) + 1;
+        int counter = 0;
+
+        System.out.print("Guess the integer between 1 and 10 that I am thinking (q to quit): ");
         String response = stdIn.next();
-        do {
+
+        while (!response.equalsIgnoreCase("q")) {
             counter++;
 
             if (logic.wasGuessed(response)) {
@@ -94,7 +100,7 @@ public class ExceptionsDemoApp {
 
             System.out.print("Guess again: ");
             response = stdIn.next();
-        } while (!response.equalsIgnoreCase("q"));
+        }
 
         System.out.println("Game Over!");
     }
@@ -112,7 +118,7 @@ public class ExceptionsDemoApp {
             return guess == randomNumber;
         }
 
-        public boolean isWarm(String input) /*throws GameException */  {//
+        public boolean isWarm(String input) /* throws GameException */  {//
             boolean isWarm = false;
 
             try {
@@ -121,13 +127,13 @@ public class ExceptionsDemoApp {
                     isWarm = true;
                 }
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                //throw new GameException();
             }
 
             return isWarm;
         }
 
-        public boolean isCold(String input) /*throws GameRuntimeException*/ { //
+        public boolean isCold(String input) /*throws GameRuntimeException */ {
             boolean isCold = false;
 
             try {
@@ -136,12 +142,19 @@ public class ExceptionsDemoApp {
                     isCold = true;
                 }
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                throw new GameRuntimeException();
             }
 
             return isCold;
         }
     }
+
+    // When to use checked vs. unchecked?
+    // https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html
+    // Here's the bottom line guideline: If a client can reasonably be
+    // expected to recover from an exception, make it a checked exception.
+    // If a client cannot do anything to recover from the exception, make
+    // it an unchecked exception.
 
     class GameException extends Exception {
         public GameException() {
