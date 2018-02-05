@@ -115,5 +115,10 @@ public class StreamsExamples {
         IntSummaryStatistics summary = IntStream.of(7, 2, 19, 88, 73, 4, 10)
                 .summaryStatistics();
         System.out.println(summary);
+
+        // For Bonus, 1pt for each passed exercise added to lowest lab score.
+        // http://codingbat.com/java/Functional-1
+        // http://codingbat.com/java/Functional-2
+
     }
 }
